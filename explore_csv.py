@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 CSV Data Exploration Template
 
@@ -57,12 +59,6 @@ def basic_exploration(df):
     print("\n")
 
 def plot_distributions(df):
-    """
-    Plot the distribution for each numeric column using histograms with KDE.
-    
-    Parameters:
-        df (pd.DataFrame): The DataFrame to visualize.
-    """
     numeric_cols = df.select_dtypes(include=['number']).columns
     for col in numeric_cols:
         plt.figure(figsize=(8, 4))
@@ -71,35 +67,29 @@ def plot_distributions(df):
         plt.xlabel(col)
         plt.ylabel('Frequency')
         plt.tight_layout()
-        plt.show()
+        # Save the plot instead of showing it
+        plt.savefig(f'{col}_distribution.png')  # Save the plot as a .png file
+        plt.close()  # Close the figure to prevent memory issues
 
 def plot_pairwise_relationships(df):
-    """
-    Create a pairplot of numeric columns to explore pairwise relationships.
-    
-    Parameters:
-        df (pd.DataFrame): The DataFrame to visualize.
-    """
     numeric_cols = df.select_dtypes(include=['number']).columns
     if len(numeric_cols) > 1:
         sns.pairplot(df[numeric_cols].dropna())
         plt.suptitle("Pairwise Relationships", y=1.02)
-        plt.show()
+        # Save the plot instead of showing it
+        plt.savefig('pairwise_relationships.png')
+        plt.close()
 
 def plot_correlation_heatmap(df):
-    """
-    Plot a heatmap of correlations between numeric columns.
-    
-    Parameters:
-        df (pd.DataFrame): The DataFrame to visualize.
-    """
     numeric_df = df.select_dtypes(include=['number'])
     if not numeric_df.empty:
         plt.figure(figsize=(10, 8))
         corr = numeric_df.corr()
         sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
         plt.title("Correlation Heatmap")
-        plt.show()
+        # Save the plot instead of showing it
+        plt.savefig('correlation_heatmap.png')
+        plt.close()
 
 def main():
     # Parse command-line arguments for the CSV file path.
