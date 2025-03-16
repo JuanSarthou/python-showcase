@@ -7,7 +7,7 @@ This script provides a template for exploring CSV files using Pandas and Seaborn
 It performs basic data exploration tasks and creates common visualizations.
 
 Usage:
-    python explore_csv.py path/to/your_data.csv
+    python3 explore_csv.py path/to/your_data.csv
 """
 
 import argparse
