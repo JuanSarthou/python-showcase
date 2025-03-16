@@ -14,7 +14,7 @@ import re
 uploaded = files.upload()
 
 # Step 2: Read and preprocess the uploaded PDF
-pdf_file = next(iter(uploaded))  # Get the uploaded file name dynamically
+pdf_file = next(iter(uploaded))  # Get the uploaded file name dynamically while using colab
 
 with open(pdf_file, 'rb') as file:
     reader = PyPDF2.PdfReader(file)
@@ -26,8 +26,6 @@ with open(pdf_file, 'rb') as file:
 # Step 3: Preprocess text to remove unnecessary line breaks and spaces
 # Replace multiple spaces with a single space
 text = re.sub(r'\s+', ' ', text)
-
-# Optional: Further clean the text if necessary (e.g., remove unwanted characters)
 
 # Step 4: Convert extracted text to speech using gTTS
 tts = gTTS(text, lang='en')
