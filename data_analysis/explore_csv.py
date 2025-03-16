@@ -67,7 +67,7 @@ def plot_distributions(df):
         plt.xlabel(col)
         plt.ylabel('Frequency')
         plt.tight_layout()
-        # Save the plot instead of showing it
+        # Save the plot
         plt.savefig(f'{col}_distribution.png')  # Save the plot as a .png file
         plt.close()  # Close the figure to prevent memory issues
 
@@ -76,7 +76,7 @@ def plot_pairwise_relationships(df):
     if len(numeric_cols) > 1:
         sns.pairplot(df[numeric_cols].dropna())
         plt.suptitle("Pairwise Relationships", y=1.02)
-        # Save the plot instead of showing it
+        # Save the plot
         plt.savefig('pairwise_relationships.png')
         plt.close()
 
@@ -87,7 +87,7 @@ def plot_correlation_heatmap(df):
         corr = numeric_df.corr()
         sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
         plt.title("Correlation Heatmap")
-        # Save the plot instead of showing it
+        # Save the plot
         plt.savefig('correlation_heatmap.png')
         plt.close()
 
